@@ -15,20 +15,22 @@
 
 package net.grandcentrix.thirtyinch.rx;
 
+import android.support.annotation.NonNull;
+
 import net.grandcentrix.thirtyinch.TiLifecycleObserver;
 import net.grandcentrix.thirtyinch.TiPresenter;
-
-import android.support.annotation.NonNull;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
 public class RxTiPresenterSubscriptionHandler {
 
+    //管理多个subscription
     private CompositeSubscription mPresenterSubscriptions = new CompositeSubscription();
 
     private CompositeSubscription mUiSubscriptions;
 
+    //加入生命周期管理
     public RxTiPresenterSubscriptionHandler(final TiPresenter presenter) {
         presenter.addLifecycleObserver(new TiLifecycleObserver() {
             @Override
